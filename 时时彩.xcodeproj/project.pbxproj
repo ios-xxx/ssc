@@ -1,0 +1,542 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B650C5C220581BF10080AD26 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B650C5C120581BF10080AD26 /* AppDelegate.m */; };
+		B650C5C520581BF10080AD26 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B650C5C420581BF10080AD26 /* ViewController.m */; };
+		B650C5C720581BF10080AD26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B650C5C620581BF10080AD26 /* Assets.xcassets */; };
+		B650C5CA20581BF10080AD26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B650C5C820581BF10080AD26 /* Main.storyboard */; };
+		B650C5CD20581BF10080AD26 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B650C5CC20581BF10080AD26 /* main.m */; };
+		B650C5D820581BF10080AD26 /* ___Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = B650C5D720581BF10080AD26 /* ___Tests.m */; };
+		B650C5E320581BF10080AD26 /* ___UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B650C5E220581BF10080AD26 /* ___UITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B650C5D420581BF10080AD26 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B650C5B520581BF10080AD26 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B650C5BC20581BF10080AD26;
+			remoteInfo = "时时彩";
+		};
+		B650C5DF20581BF10080AD26 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B650C5B520581BF10080AD26 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B650C5BC20581BF10080AD26;
+			remoteInfo = "时时彩";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B650C5BD20581BF10080AD26 /* 时时彩.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "时时彩.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B650C5C020581BF10080AD26 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B650C5C120581BF10080AD26 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B650C5C320581BF10080AD26 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		B650C5C420581BF10080AD26 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B650C5C620581BF10080AD26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B650C5C920581BF10080AD26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B650C5CB20581BF10080AD26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B650C5CC20581BF10080AD26 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B650C5CE20581BF10080AD26 /* ___.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "___.entitlements"; sourceTree = "<group>"; };
+		B650C5D320581BF10080AD26 /* 时时彩Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "时时彩Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B650C5D720581BF10080AD26 /* ___Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "___Tests.m"; sourceTree = "<group>"; };
+		B650C5D920581BF10080AD26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B650C5DE20581BF10080AD26 /* 时时彩UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "时时彩UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B650C5E220581BF10080AD26 /* ___UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "___UITests.m"; sourceTree = "<group>"; };
+		B650C5E420581BF10080AD26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B650C5BA20581BF10080AD26 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B650C5D020581BF10080AD26 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B650C5DB20581BF10080AD26 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B650C5B420581BF10080AD26 = {
+			isa = PBXGroup;
+			children = (
+				B650C5BF20581BF10080AD26 /* 时时彩 */,
+				B650C5D620581BF10080AD26 /* 时时彩Tests */,
+				B650C5E120581BF10080AD26 /* 时时彩UITests */,
+				B650C5BE20581BF10080AD26 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B650C5BE20581BF10080AD26 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B650C5BD20581BF10080AD26 /* 时时彩.app */,
+				B650C5D320581BF10080AD26 /* 时时彩Tests.xctest */,
+				B650C5DE20581BF10080AD26 /* 时时彩UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B650C5BF20581BF10080AD26 /* 时时彩 */ = {
+			isa = PBXGroup;
+			children = (
+				B650C5C020581BF10080AD26 /* AppDelegate.h */,
+				B650C5C120581BF10080AD26 /* AppDelegate.m */,
+				B650C5C320581BF10080AD26 /* ViewController.h */,
+				B650C5C420581BF10080AD26 /* ViewController.m */,
+				B650C5C620581BF10080AD26 /* Assets.xcassets */,
+				B650C5C820581BF10080AD26 /* Main.storyboard */,
+				B650C5CB20581BF10080AD26 /* Info.plist */,
+				B650C5CC20581BF10080AD26 /* main.m */,
+				B650C5CE20581BF10080AD26 /* ___.entitlements */,
+			);
+			path = "时时彩";
+			sourceTree = "<group>";
+		};
+		B650C5D620581BF10080AD26 /* 时时彩Tests */ = {
+			isa = PBXGroup;
+			children = (
+				B650C5D720581BF10080AD26 /* ___Tests.m */,
+				B650C5D920581BF10080AD26 /* Info.plist */,
+			);
+			path = "时时彩Tests";
+			sourceTree = "<group>";
+		};
+		B650C5E120581BF10080AD26 /* 时时彩UITests */ = {
+			isa = PBXGroup;
+			children = (
+				B650C5E220581BF10080AD26 /* ___UITests.m */,
+				B650C5E420581BF10080AD26 /* Info.plist */,
+			);
+			path = "时时彩UITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B650C5BC20581BF10080AD26 /* 时时彩 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B650C5E720581BF10080AD26 /* Build configuration list for PBXNativeTarget "时时彩" */;
+			buildPhases = (
+				B650C5B920581BF10080AD26 /* Sources */,
+				B650C5BA20581BF10080AD26 /* Frameworks */,
+				B650C5BB20581BF10080AD26 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "时时彩";
+			productName = "时时彩";
+			productReference = B650C5BD20581BF10080AD26 /* 时时彩.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B650C5D220581BF10080AD26 /* 时时彩Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B650C5EA20581BF10080AD26 /* Build configuration list for PBXNativeTarget "时时彩Tests" */;
+			buildPhases = (
+				B650C5CF20581BF10080AD26 /* Sources */,
+				B650C5D020581BF10080AD26 /* Frameworks */,
+				B650C5D120581BF10080AD26 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B650C5D520581BF10080AD26 /* PBXTargetDependency */,
+			);
+			name = "时时彩Tests";
+			productName = "时时彩Tests";
+			productReference = B650C5D320581BF10080AD26 /* 时时彩Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B650C5DD20581BF10080AD26 /* 时时彩UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B650C5ED20581BF10080AD26 /* Build configuration list for PBXNativeTarget "时时彩UITests" */;
+			buildPhases = (
+				B650C5DA20581BF10080AD26 /* Sources */,
+				B650C5DB20581BF10080AD26 /* Frameworks */,
+				B650C5DC20581BF10080AD26 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B650C5E020581BF10080AD26 /* PBXTargetDependency */,
+			);
+			name = "时时彩UITests";
+			productName = "时时彩UITests";
+			productReference = B650C5DE20581BF10080AD26 /* 时时彩UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B650C5B520581BF10080AD26 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = hongchen;
+				TargetAttributes = {
+					B650C5BC20581BF10080AD26 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					B650C5D220581BF10080AD26 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B650C5BC20581BF10080AD26;
+					};
+					B650C5DD20581BF10080AD26 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B650C5BC20581BF10080AD26;
+					};
+				};
+			};
+			buildConfigurationList = B650C5B820581BF10080AD26 /* Build configuration list for PBXProject "时时彩" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B650C5B420581BF10080AD26;
+			productRefGroup = B650C5BE20581BF10080AD26 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B650C5BC20581BF10080AD26 /* 时时彩 */,
+				B650C5D220581BF10080AD26 /* 时时彩Tests */,
+				B650C5DD20581BF10080AD26 /* 时时彩UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B650C5BB20581BF10080AD26 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B650C5C720581BF10080AD26 /* Assets.xcassets in Resources */,
+				B650C5CA20581BF10080AD26 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B650C5D120581BF10080AD26 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B650C5DC20581BF10080AD26 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B650C5B920581BF10080AD26 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B650C5C520581BF10080AD26 /* ViewController.m in Sources */,
+				B650C5CD20581BF10080AD26 /* main.m in Sources */,
+				B650C5C220581BF10080AD26 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B650C5CF20581BF10080AD26 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B650C5D820581BF10080AD26 /* ___Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B650C5DA20581BF10080AD26 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B650C5E320581BF10080AD26 /* ___UITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B650C5D520581BF10080AD26 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B650C5BC20581BF10080AD26 /* 时时彩 */;
+			targetProxy = B650C5D420581BF10080AD26 /* PBXContainerItemProxy */;
+		};
+		B650C5E020581BF10080AD26 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B650C5BC20581BF10080AD26 /* 时时彩 */;
+			targetProxy = B650C5DF20581BF10080AD26 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B650C5C820581BF10080AD26 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B650C5C920581BF10080AD26 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B650C5E520581BF10080AD26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		B650C5E620581BF10080AD26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		B650C5E820581BF10080AD26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "时时彩/___.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "时时彩/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.songyangchen.---";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B650C5E920581BF10080AD26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "时时彩/___.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "时时彩/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.songyangchen.---";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B650C5EB20581BF10080AD26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "时时彩Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.songyangchen.---Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/时时彩.app/Contents/MacOS/时时彩";
+			};
+			name = Debug;
+		};
+		B650C5EC20581BF10080AD26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "时时彩Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.songyangchen.---Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/时时彩.app/Contents/MacOS/时时彩";
+			};
+			name = Release;
+		};
+		B650C5EE20581BF10080AD26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "时时彩UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.songyangchen.---UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "时时彩";
+			};
+			name = Debug;
+		};
+		B650C5EF20581BF10080AD26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "时时彩UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.songyangchen.---UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "时时彩";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B650C5B820581BF10080AD26 /* Build configuration list for PBXProject "时时彩" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B650C5E520581BF10080AD26 /* Debug */,
+				B650C5E620581BF10080AD26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B650C5E720581BF10080AD26 /* Build configuration list for PBXNativeTarget "时时彩" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B650C5E820581BF10080AD26 /* Debug */,
+				B650C5E920581BF10080AD26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B650C5EA20581BF10080AD26 /* Build configuration list for PBXNativeTarget "时时彩Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B650C5EB20581BF10080AD26 /* Debug */,
+				B650C5EC20581BF10080AD26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B650C5ED20581BF10080AD26 /* Build configuration list for PBXNativeTarget "时时彩UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B650C5EE20581BF10080AD26 /* Debug */,
+				B650C5EF20581BF10080AD26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B650C5B520581BF10080AD26 /* Project object */;
+}
