@@ -10,7 +10,10 @@
 #import "CSYDataModel.h"
 
 @interface ViewController()
-
+{
+    /** 每次验证 */
+    int evertTime;
+}
 /** 存放开奖数据 */
 @property (strong,nonatomic) NSMutableArray * dataArrs;
 @end
@@ -42,27 +45,30 @@
         _dataArrs = [NSMutableArray arrayWithArray:[[_dataArrs reverseObjectEnumerator] allObjects]];
         
         
-        /** 验证期数 */
-        __block int count=0;
+        /** 当前验证次数 */
+        __block int  currentCount=0;
         
         /** 倒数第几期开始验证 */
         __block int count2 = 4;
         
-        while (count < 3) {
+        /** 每次验证 */
+        int evertTime = 3;
+        
+        while (currentCount < evertTime) {
             
             CSYDataModel * model = [CSYDataModel mj_objectWithKeyValues:_dataArrs[_dataArrs.count - count2]];
             
             DLog(@"number = %@",model.result);
-            [self verifictionNumber:50 query:model.result count:count block:^(BOOL isOk,NSMutableArray * numArrs) {
+            [self verifictionNumber:50 query:model.result count:currentCount block:^(BOOL isOk,NSMutableArray * numArrs) {
 
                 if (isOk) { //验证期数中有一期正确则初始化
                     
-                    count = 0;
+                    currentCount = 0;
                     count2 = 4;
                     
                 }else {
                     
-                    count++;
+                    currentCount++;
                     count2--;
                 }
 
