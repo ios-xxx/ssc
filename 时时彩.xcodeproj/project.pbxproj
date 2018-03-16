@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B60EE9AD205BEB8400AFB6A5 /* CSYAwardTable.m in Sources */ = {isa = PBXBuildFile; fileRef = B60EE9AC205BEB8400AFB6A5 /* CSYAwardTable.m */; };
+		B60EE9B1205C250800AFB6A5 /* CSYResaultTable.m in Sources */ = {isa = PBXBuildFile; fileRef = B60EE9B0205C250800AFB6A5 /* CSYResaultTable.m */; };
+		B60EE9B4205C2FA900AFB6A5 /* CSYResaultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B60EE9B3205C2FA900AFB6A5 /* CSYResaultModel.m */; };
 		B650C5C220581BF10080AD26 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B650C5C120581BF10080AD26 /* AppDelegate.m */; };
 		B650C5C520581BF10080AD26 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B650C5C420581BF10080AD26 /* ViewController.m */; };
 		B650C5C720581BF10080AD26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B650C5C620581BF10080AD26 /* Assets.xcassets */; };
@@ -102,6 +105,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B60EE9AB205BEB8400AFB6A5 /* CSYAwardTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSYAwardTable.h; sourceTree = "<group>"; };
+		B60EE9AC205BEB8400AFB6A5 /* CSYAwardTable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSYAwardTable.m; sourceTree = "<group>"; };
+		B60EE9AF205C250800AFB6A5 /* CSYResaultTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSYResaultTable.h; sourceTree = "<group>"; };
+		B60EE9B0205C250800AFB6A5 /* CSYResaultTable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSYResaultTable.m; sourceTree = "<group>"; };
+		B60EE9B2205C2FA900AFB6A5 /* CSYResaultModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSYResaultModel.h; sourceTree = "<group>"; };
+		B60EE9B3205C2FA900AFB6A5 /* CSYResaultModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSYResaultModel.m; sourceTree = "<group>"; };
 		B650C5BD20581BF10080AD26 /* 时时彩.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "时时彩.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B650C5C020581BF10080AD26 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B650C5C120581BF10080AD26 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -288,6 +297,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B60EE9AA205BEB2000AFB6A5 /* 开奖号码表格 */ = {
+			isa = PBXGroup;
+			children = (
+				B60EE9AB205BEB8400AFB6A5 /* CSYAwardTable.h */,
+				B60EE9AC205BEB8400AFB6A5 /* CSYAwardTable.m */,
+			);
+			path = "开奖号码表格";
+			sourceTree = "<group>";
+		};
+		B60EE9AE205C150300AFB6A5 /* 验证结果表格 */ = {
+			isa = PBXGroup;
+			children = (
+				B60EE9AF205C250800AFB6A5 /* CSYResaultTable.h */,
+				B60EE9B0205C250800AFB6A5 /* CSYResaultTable.m */,
+			);
+			path = "验证结果表格";
+			sourceTree = "<group>";
+		};
 		B650C5B420581BF10080AD26 = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +343,8 @@
 				B650C5C120581BF10080AD26 /* AppDelegate.m */,
 				B650C5C320581BF10080AD26 /* ViewController.h */,
 				B650C5C420581BF10080AD26 /* ViewController.m */,
+				B60EE9AA205BEB2000AFB6A5 /* 开奖号码表格 */,
+				B60EE9AE205C150300AFB6A5 /* 验证结果表格 */,
 				B69C8D8F205AB2E800F6DE91 /* DataModel */,
 				B69C8D89205AA96C00F6DE91 /* other */,
 				B69C8CAC205AA95F00F6DE91 /* lib */,
@@ -610,6 +639,8 @@
 			children = (
 				B69C8D8C205AB2D900F6DE91 /* CSYDataModel.h */,
 				B69C8D8D205AB2D900F6DE91 /* CSYDataModel.m */,
+				B60EE9B2205C2FA900AFB6A5 /* CSYResaultModel.h */,
+				B60EE9B3205C2FA900AFB6A5 /* CSYResaultModel.m */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -676,6 +707,7 @@
 		B650C5B520581BF10080AD26 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = CSY;
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = hongchen;
 				TargetAttributes = {
@@ -768,6 +800,7 @@
 				B69C8D86205AA96000F6DE91 /* SDWebImageImageIOCoder.m in Sources */,
 				B69C8D61205AA96000F6DE91 /* AFURLSessionManager.m in Sources */,
 				B69C8D7E205AA96000F6DE91 /* SDWebImageTransition.m in Sources */,
+				B60EE9B4205C2FA900AFB6A5 /* CSYResaultModel.m in Sources */,
 				B69C8D66205AA96000F6DE91 /* CSYNSSecureTextFieldCell.m in Sources */,
 				B69C8D49205AA96000F6DE91 /* MJProperty.m in Sources */,
 				B69C8D6E205AA96000F6DE91 /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -785,6 +818,7 @@
 				B69C8D69205AA96000F6DE91 /* CSYMessageView.m in Sources */,
 				B69C8D82205AA96000F6DE91 /* SDWebImageGIFCoder.m in Sources */,
 				B69C8D46205AA96000F6DE91 /* NSColor+CSYHex.m in Sources */,
+				B60EE9B1205C250800AFB6A5 /* CSYResaultTable.m in Sources */,
 				B69C8D4E205AA96000F6DE91 /* NSString+MJExtension.m in Sources */,
 				B69C8D76205AA96000F6DE91 /* SDWebImageCoderHelper.m in Sources */,
 				B69C8D77205AA96000F6DE91 /* SDWebImageCompat.m in Sources */,
@@ -804,6 +838,7 @@
 				B69C8D55205AA96000F6DE91 /* ViewController+MASAdditions.m in Sources */,
 				B69C8D48205AA96000F6DE91 /* NSObject+MJKeyValue.m in Sources */,
 				B69C8D68205AA96000F6DE91 /* CSYMsg.m in Sources */,
+				B60EE9AD205BEB8400AFB6A5 /* CSYAwardTable.m in Sources */,
 				B69C8D88205AA96000F6DE91 /* SDWebImageWebPCoder.m in Sources */,
 				B69C8D6C205AA96000F6DE91 /* MKAnnotationView+WebCache.m in Sources */,
 				B69C8D65205AA96000F6DE91 /* NSTextFieldCellCenter.m in Sources */,
