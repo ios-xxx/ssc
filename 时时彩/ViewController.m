@@ -15,6 +15,9 @@
 {
     /** 每次验证 */
     __block int evertTime;
+    
+    /** 总赢利 */
+    __block float totalProfit;
 }
 
 /** 验证期数 */
@@ -39,6 +42,7 @@
 
 /** 存放开奖数据 */
 @property (strong,nonatomic) NSMutableArray * dataArrs;
+
 @end
 
 @implementation ViewController
@@ -63,7 +67,7 @@
     url=[url stringByAppendingFormat:@"%d",arcUri];
     
     
-    //    DLog(@"%@",url);
+        DLog(@"%@",url);
     
     [CSYRequest requestGetUrl:url paramters:nil cookie:nil success:^(NSURLSessionDataTask * _Nonnull task, NSData *data) {
         
@@ -89,46 +93,76 @@
         DLog(@"%@",err);
     }];
     
-    
 }
 
 
 /** 响应开始验证 */
 - (IBAction)startVerification:(NSButton *)sender {
     
-//    sender.enabled = false;
+    sender.enabled = false;
+    /** 初始化总赢利 */
+    totalProfit = 0.0;
     
-    /** 倒数第几期开始验证 */
-    __block int verificationNumber = [_VerificationTxt.stringValue intValue];
-    verificationNumber == 0 ? verificationNumber = 1 : verificationNumber;
-    
-    /** 每次验证期数 */
-    evertTime = [_checkTxt.stringValue intValue];
-    evertTime == 0 ? evertTime = 3 : evertTime;
-    
-    /** 每次随机的注数 */
-    int arcNumber = [_arcNumberTxt.stringValue intValue];
-    arcNumber == 0 ? arcNumber = 50 : arcNumber;
-    
-    
-    while (verificationNumber > 0) {
-
-        if (_stopOperation) break;
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+       
+        /** 倒数第几期开始验证 */
+        __block int verificationNumber = [_VerificationTxt.stringValue intValue];
+        verificationNumber == 0 ? verificationNumber = 1 : verificationNumber;
         
-        [self verificationverificationNumber:verificationNumber evertNumber:evertTime number:arcNumber complete:^(BOOL isCoreer) {
+        /** 每次验证期数 */
+        evertTime = [_checkTxt.stringValue intValue];
+        evertTime == 0 ? evertTime = 3 : evertTime;
+        
+        /** 每次随机的注数 */
+        int arcNumber = [_arcNumberTxt.stringValue intValue];
+        arcNumber == 0 ? arcNumber = 50 : arcNumber;
+        
+        
+        
+        while (verificationNumber > 0) {
             
-            verificationNumber --;
-            
-            if (verificationNumber == 0)
-            { sender.enabled = true;
-            
-                 [_resaultTable reloadData];
-                /** 显示中奖总期数 */
-                [self showWinningTotalNumber:[NSArray arrayWithArray:_resaultTable.dataArrs]];
+            if (_stopOperation || totalProfit/100 > 0.3){
+                
+                
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                   
+                    
+                    NSAlert * alert = [NSAlert new];
+                    [alert addButtonWithTitle:@"知道了"];
+                    [alert setInformativeText:[NSString stringWithFormat:@"恭喜你在第%d期达到%%30赢利",verificationNumber]];
+                    
+                    [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+                        
+                    }];
+                    
+                    
+                    [_resaultTable reloadData];
+                    sender.enabled = true;
+                });
+                break;
             }
-        }];
+            
+            [self verificationverificationNumber:verificationNumber evertNumber:evertTime number:arcNumber complete:^(BOOL isCoreer) {
+                
+                verificationNumber --;
+                
+                if (verificationNumber == 0)
+                {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                       
+                        sender.enabled = true;
+                        
+                        [_resaultTable reloadData];
+                        /** 显示中奖总期数 */
+                        [self showWinningTotalNumber:[NSArray arrayWithArray:_resaultTable.dataArrs]];
+                    });
+                }
+            }];
+            
+        }
         
-    }
+    });
+   
     
     
 }
@@ -195,27 +229,53 @@
             
             if (isCorrect){  // 如果中奖号不在这个数组中
               
-                DLog(@"cont= %d",currentCount);
+//                DLog(@"cont= %d",currentCount);
                 if (currentCount == evertTime) {
+                    
                     [self arcNumber:arcNumber block:^(NSMutableArray *numArrs) {
                         
                         if (numArrs.count) {
-
-                        DLog(@"result = %@ , number = %@",numArrs,model.result);
-                      //  complete(true);
-                        BOOL isCorrect =  [self queryWinningNumber:model.result queryArr:numArrs];
-
-                        if (isCorrect) { // 当中奖结果存在
-
-                            [_resaultTable.dataArrs addObject:@{@"resault":@"中"}];
-                        } else {
                             
-                            [_resaultTable.dataArrs addObject:@{@"resault":@"没中"}];
+                            if (_dataArrs.count - count2 == _dataArrs.count -1) {
 
-                        }
-                            
-                            
+                                DLog(@"%@%@",numArrs,model.result);
 
+
+                            }else {
+                            
+                                CSYDataModel * model2 = [CSYDataModel mj_objectWithKeyValues:_dataArrs[_dataArrs.count - count2+1]];
+                                
+                                DLog(@"result = %@ , number = %@",numArrs,model2.result);
+                                //  complete(true);
+                                BOOL isCorrect =  [self queryWinningNumber:model2.result queryArr:numArrs];
+                                
+                                if (isCorrect) { // 当中奖结果存在
+                                    
+                                    /** 赢利+9.6 */
+                                    totalProfit +=9.60;
+                                    
+                            
+                                    
+                                    NSDictionary * paramterDict = @{
+                                                                    @"resault":@"中",
+                                                                    @"profit":@"9.6",
+                                                                    @"totalProfit":@(totalProfit),
+                                                                    };
+                                    [_resaultTable.dataArrs addObject:paramterDict];
+                                } else {
+                                    
+                                    /** 赢利-10 */
+                                    totalProfit -=10;
+                                    NSDictionary * paramterDict = @{
+                                                                    @"resault":@"没中",
+                                                                    @"profit":@"-10",
+                                                                    @"totalProfit":@(totalProfit),
+                                                                    };
+                                    [_resaultTable.dataArrs addObject:paramterDict];
+                                    
+                                }
+                                
+                            }
                     }
                         complete(true);
                     }];
@@ -229,6 +289,7 @@
                 currentCount = 0;
                 count2 = evertNumber + verificationNumber;
             }
+            
             
         }];
         

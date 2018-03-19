@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -701,6 +702,55 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
+        <!--Window Controller-->
+        <scene sceneID="SWp-ED-JOG">
+            <objects>
+                <windowController id="x8f-uI-1hP" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Vwg-pP-fqG">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="294" y="313" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+                        <connections>
+                            <outlet property="delegate" destination="x8f-uI-1hP" id="wQ2-l9-ezV"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="K6l-Tq-T6L" kind="relationship" relationship="window.shadowedContentViewController" id="TOE-RI-OLA"/>
+                    </connections>
+                </windowController>
+                <customObject id="25F-Vv-bFa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="606" y="250"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="XY4-LK-qzZ">
+            <objects>
+                <viewController id="K6l-Tq-T6L" sceneMemberID="viewController">
+                    <view key="view" id="ZVg-KX-b8g">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4PN-IK-jTr" customClass="CSYWKWebview">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4PN-IK-jTr" secondAttribute="trailing" id="L26-U5-dIF"/>
+                            <constraint firstItem="4PN-IK-jTr" firstAttribute="leading" secondItem="ZVg-KX-b8g" secondAttribute="leading" id="V8q-xX-cEv"/>
+                            <constraint firstAttribute="bottom" secondItem="4PN-IK-jTr" secondAttribute="bottom" id="Y7l-E3-CKb"/>
+                            <constraint firstItem="4PN-IK-jTr" firstAttribute="top" secondItem="ZVg-KX-b8g" secondAttribute="top" id="ucS-R8-5AE"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="YhK-8f-sxk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1000" y="770"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
@@ -940,6 +990,18 @@
                                     <action selector="stopOperation:" target="XfG-lQ-9wD" id="eGU-2v-m1a"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Ga-HX-5zn">
+                                <rect key="frame" x="778" y="281" width="189" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="投注" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FUE-wu-cUB">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="stopOperation:" target="XfG-lQ-9wD" id="WHo-uK-E71"/>
+                                    <segue destination="K6l-Tq-T6L" kind="modal" id="loT-D1-qFr"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -954,7 +1016,10 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="216" y="796"/>
+            <point key="canvasLocation" x="-10" y="879"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="loT-D1-qFr"/>
+    </inferredMetricsTieBreakers>
 </document>

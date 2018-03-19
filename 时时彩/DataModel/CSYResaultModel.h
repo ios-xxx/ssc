@@ -11,4 +11,8 @@
 @interface CSYResaultModel : NSObject
 /** 中奖结果 */
 @property (strong,nonatomic) NSString * resault;
+/** 本期赢利 */
+@property (strong,nonatomic) NSString * profit;
+/** 总赢利 */
+@property (strong,nonatomic) NSString * totalProfit;
 @end

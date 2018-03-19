@@ -53,11 +53,11 @@
         
     }else if ([[tableColumn identifier] isEqualToString:@"profit"]) {
         
-        [textCell setTitle:model.resault];
+        [textCell setTitle:model.profit];
         
-    }else if ([[tableColumn identifier] isEqualToString:@"profit"]) {
+    }else if ([[tableColumn identifier] isEqualToString:@"totalProfit"]) {
     
-         [textCell setTitle:model.resault];
+         [textCell setTitle:model.totalProfit];
     }
     
     

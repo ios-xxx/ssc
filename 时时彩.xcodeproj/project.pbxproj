@@ -17,6 +17,8 @@
 		B650C5CD20581BF10080AD26 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B650C5CC20581BF10080AD26 /* main.m */; };
 		B650C5D820581BF10080AD26 /* ___Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = B650C5D720581BF10080AD26 /* ___Tests.m */; };
 		B650C5E320581BF10080AD26 /* ___UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B650C5E220581BF10080AD26 /* ___UITests.m */; };
+		B6634D20205FE47E0043BE60 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6634D1F205FE47E0043BE60 /* WebKit.framework */; };
+		B6634D23205FE4A30043BE60 /* CSYWKWebview.m in Sources */ = {isa = PBXBuildFile; fileRef = B6634D22205FE4A30043BE60 /* CSYWKWebview.m */; };
 		B69C8D46205AA96000F6DE91 /* NSColor+CSYHex.m in Sources */ = {isa = PBXBuildFile; fileRef = B69C8CAE205AA95F00F6DE91 /* NSColor+CSYHex.m */; };
 		B69C8D47205AA96000F6DE91 /* MJPropertyType.m in Sources */ = {isa = PBXBuildFile; fileRef = B69C8CB4205AA95F00F6DE91 /* MJPropertyType.m */; };
 		B69C8D48205AA96000F6DE91 /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = B69C8CB7205AA95F00F6DE91 /* NSObject+MJKeyValue.m */; };
@@ -127,6 +129,9 @@
 		B650C5DE20581BF10080AD26 /* 时时彩UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "时时彩UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B650C5E220581BF10080AD26 /* ___UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "___UITests.m"; sourceTree = "<group>"; };
 		B650C5E420581BF10080AD26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6634D1F205FE47E0043BE60 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		B6634D21205FE4A30043BE60 /* CSYWKWebview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSYWKWebview.h; sourceTree = "<group>"; };
+		B6634D22205FE4A30043BE60 /* CSYWKWebview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSYWKWebview.m; sourceTree = "<group>"; };
 		B69C8CAE205AA95F00F6DE91 /* NSColor+CSYHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+CSYHex.m"; sourceTree = "<group>"; };
 		B69C8CAF205AA95F00F6DE91 /* NSColor+CSYHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+CSYHex.h"; sourceTree = "<group>"; };
 		B69C8CB1205AA95F00F6DE91 /* MJPropertyKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPropertyKey.h; sourceTree = "<group>"; };
@@ -277,6 +282,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6634D20205FE47E0043BE60 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +328,7 @@
 				B650C5D620581BF10080AD26 /* 时时彩Tests */,
 				B650C5E120581BF10080AD26 /* 时时彩UITests */,
 				B650C5BE20581BF10080AD26 /* Products */,
+				B6634D1E205FE47E0043BE60 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -343,6 +350,8 @@
 				B650C5C120581BF10080AD26 /* AppDelegate.m */,
 				B650C5C320581BF10080AD26 /* ViewController.h */,
 				B650C5C420581BF10080AD26 /* ViewController.m */,
+				B6634D21205FE4A30043BE60 /* CSYWKWebview.h */,
+				B6634D22205FE4A30043BE60 /* CSYWKWebview.m */,
 				B60EE9AA205BEB2000AFB6A5 /* 开奖号码表格 */,
 				B60EE9AE205C150300AFB6A5 /* 验证结果表格 */,
 				B69C8D8F205AB2E800F6DE91 /* DataModel */,
@@ -373,6 +382,14 @@
 				B650C5E420581BF10080AD26 /* Info.plist */,
 			);
 			path = "时时彩UITests";
+			sourceTree = "<group>";
+		};
+		B6634D1E205FE47E0043BE60 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B6634D1F205FE47E0043BE60 /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B69C8CAC205AA95F00F6DE91 /* lib */ = {
@@ -805,6 +822,7 @@
 				B69C8D49205AA96000F6DE91 /* MJProperty.m in Sources */,
 				B69C8D6E205AA96000F6DE91 /* UIImageView+HighlightedWebCache.m in Sources */,
 				B69C8D56205AA96000F6DE91 /* MASCompositeConstraint.m in Sources */,
+				B6634D23205FE4A30043BE60 /* CSYWKWebview.m in Sources */,
 				B650C5CD20581BF10080AD26 /* main.m in Sources */,
 				B69C8D5B205AA96000F6DE91 /* MASConstraint.m in Sources */,
 				B69C8D67205AA96000F6DE91 /* CSYRequest.m in Sources */,
