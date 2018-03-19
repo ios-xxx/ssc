@@ -9,6 +9,11 @@
 #import "CSYResaultTable.h"
 #import "CSYResaultModel.h"
 
+@interface CSYResaultTable ()
+/** 赢利数据 */
+@property (strong,nonatomic) NSMutableArray * profitArrs;
+@end
+
 @implementation CSYResaultTable
 
 
@@ -27,19 +32,18 @@
         [column.headerCell setAlignment:NSTextAlignmentCenter];
     }
     
-    self.needsDisplay=true;
     self.delegate = self;
     self.dataSource = self;
 }
 
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
     
-    return [_dataArr count];
+    return [_dataArrs count];
 }
 
 -(void)tableView:(NSTableView *)tableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     
-    CSYResaultModel * model = [CSYResaultModel mj_objectWithKeyValues:_dataArr[row]];
+    CSYResaultModel * model = [CSYResaultModel mj_objectWithKeyValues:_dataArrs[row]];
     
     NSButton * textCell = cell;
     
@@ -73,5 +77,16 @@
 }
 
 
+-(NSMutableArray *)dataArrs {
+    
+    if (_dataArrs) return _dataArrs;
 
+    return _dataArrs = [NSMutableArray new];
+}
+
+-(NSMutableArray *)profitArrs {
+    
+    if (_profitArrs) return _profitArrs;
+    return _profitArrs = [NSMutableArray new];
+}
 @end

@@ -10,5 +10,5 @@
 
 @interface CSYResaultTable : NSTableView<NSTableViewDelegate,NSTableViewDataSource>
 /** 开奖结果数据 */
-@property (strong,nonatomic) NSArray * dataArr;
+@property (strong,nonatomic) NSMutableArray * dataArrs;
 @end

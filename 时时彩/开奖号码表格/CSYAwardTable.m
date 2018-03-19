@@ -28,6 +28,8 @@
     self.needsDisplay=true;
     self.delegate = self;
     self.dataSource = self;
+    
+    
 }
 
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
@@ -51,7 +53,7 @@
         
     }
     
-    
+   
 }
 
 
@@ -67,5 +69,12 @@
     return 30;
 }
 
+
+-(void)tableViewSelectionDidChange:(NSNotification *)notification{
+    NSTableView * tableView = notification.object ;
+    NSInteger row = tableView.selectedRow;
+    NSLog(@"selection row : %zd",row);
+    
+}
 
 @end
