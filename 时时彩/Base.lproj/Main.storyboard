@@ -893,7 +893,7 @@
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="la5-Ms-XHI">
                                 <rect key="frame" x="865" y="520" width="96" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="1" placeholderString="验证期数" drawsBackground="YES" id="wq4-mv-NSi">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="5-10" placeholderString="验证期数" drawsBackground="YES" id="wq4-mv-NSi">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -927,9 +927,9 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kni-9n-Ua9">
-                                <rect key="frame" x="789" y="421" width="49" height="18"/>
+                                <rect key="frame" x="780" y="421" width="89" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="连错" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="TKT-pK-deO">
+                                <buttonCell key="cell" type="radio" title="不校验赢利" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="TKT-pK-deO">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                 </buttonCell>
@@ -938,9 +938,9 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bhz-Ac-rZK">
-                                <rect key="frame" x="883" y="421" width="49" height="18"/>
+                                <rect key="frame" x="872" y="421" width="89" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="radio" title="连对" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="M3e-1w-L4M">
+                                <buttonCell key="cell" type="radio" title="效验赢利率" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="M3e-1w-L4M">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                 </buttonCell>

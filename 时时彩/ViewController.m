@@ -10,6 +10,7 @@
 #import "CSYAwardTable.h"
 #import "CSYResaultTable.h"
 #import "CSYDataModel.h"
+#import "CSYResaultModel.h"
 
 @interface ViewController()
 {
@@ -32,7 +33,7 @@
  /** 连错单选框 */
 @property (weak) IBOutlet NSButton *errorRadio;
 /** 当前验证状态（true(连对)/(false(连错)） */
-@property (assign,nonatomic) BOOL selectVerification;
+@property (assign,nonatomic) BOOL isVerification;
 /** 停止操作 */
 @property (assign,nonatomic) BOOL stopOperation;
 /** 开奖表格 */
@@ -53,8 +54,8 @@
     
     /** 初始化请求 */
     [self initWithRequest];
+   
     
-    DLog(@"%@",_selectVerification == 0 ? @"假":@"真");
 }
 
 
@@ -103,25 +104,32 @@
     /** 初始化总赢利 */
     totalProfit = 0.0;
     
+    /** 验证范围 */
+    __block NSString * verificationStr = _VerificationTxt.stringValue;
+    
+    /** 每次验证期数 */
+    evertTime = [_checkTxt.stringValue intValue];
+    evertTime == 0 ? evertTime = 3 : evertTime;
+    
+    /** 每次随机的注数 */
+    int arcNumber = [_arcNumberTxt.stringValue intValue];
+    arcNumber == 0 ? arcNumber = 50 : arcNumber;
+    
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
        
         /** 倒数第几期开始验证 */
-        __block int verificationNumber = [_VerificationTxt.stringValue intValue];
+        NSArray * verificationArr = [verificationStr componentsSeparatedByString:@"-"];
+        
+        __block int verificationNumber = [verificationArr.lastObject intValue];
         verificationNumber == 0 ? verificationNumber = 1 : verificationNumber;
         
-        /** 每次验证期数 */
-        evertTime = [_checkTxt.stringValue intValue];
-        evertTime == 0 ? evertTime = 3 : evertTime;
+   
+        /** 校验结束期数 */
+        int overCount = [verificationArr.firstObject intValue];
         
-        /** 每次随机的注数 */
-        int arcNumber = [_arcNumberTxt.stringValue intValue];
-        arcNumber == 0 ? arcNumber = 50 : arcNumber;
-        
-        
-        
-        while (verificationNumber > 0) {
+        while (verificationNumber > overCount) {
             
-            if (_stopOperation || totalProfit/100 > 0.3){
+            if (totalProfit/100 > 0.3 && _isVerification == true){
                 
                 
                 dispatch_sync(dispatch_get_main_queue(), ^{
@@ -142,13 +150,14 @@
                 break;
             }
             
+            
             [self verificationverificationNumber:verificationNumber evertNumber:evertTime number:arcNumber complete:^(BOOL isCoreer) {
                 
                 verificationNumber --;
                 
-                if (verificationNumber == 0)
+                if (verificationNumber == overCount)
                 {
-                    dispatch_async(dispatch_get_main_queue(), ^{
+                    dispatch_sync(dispatch_get_main_queue(), ^{
                        
                         sender.enabled = true;
                         
@@ -173,7 +182,7 @@
     
     [sender setState:1];
     [_coreectRadio setState:0];
-    _selectVerification = false;
+    _isVerification = false;
     
 }
 
@@ -182,7 +191,7 @@
     
     [sender setState:0];
     [_errorRadio setState:1];
-    _selectVerification = true;
+    _isVerification = true;
     
 }
 
@@ -292,51 +301,8 @@
             
             
         }];
-        
-//        [self verifictionNumber:50 query:model.result count:currentCount block:^(BOOL isOk,NSMutableArray * numArrs) {
-//
-//             DLog(@"当前开始验证 = %d期， 验证倒数第 = %d期",currentCount,count2);
-//
-//
-//            if (isOk) { //验证期数中有一期符合查询条件，则初始化
-//
-//                currentCount = 1;
-//                count2 = evertNumber;
-//
-//            }else {
-//
-//                currentCount++;
-//                count2--;
-//            }
-//
-//
-//
-//            if (numArrs.count) {
-//
-//                DLog(@"result = %@ , number = %@",numArrs,model.result);
-//              //  complete(true);
-//                BOOL isCorrect =  [self queryWinningNumber:model.result queryArr:numArrs];
-//
-//                if (isCorrect) { // 当中奖结果存在
-//
-//                    [resaultNumberArrs addObject:@{@"resault":@"中"}];
-//                } else {
-//
-//                    [resaultNumberArrs addObject:@{@"resault":@"没中"}];
-//                }
-//
-//                _resaultTable.dataArr = [NSArray arrayWithArray:resaultNumberArrs];
-//                [_resaultTable reloadData];
-//
-//            }
-//
-//            if (count2 == evertNumber) return ;
-//        }];
-        
-        
+
     }
-    
-    
 }
 
 
@@ -347,80 +313,36 @@
  */
 -(void)showWinningTotalNumber:(NSArray *)dataArr {
     
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS %@",@"中"];
-    NSArray * resaultArr = [dataArr filteredArrayUsingPredicate:predicate];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"SELF == %@",@"中"];
+    
+    NSMutableArray * resaultArrs = [NSMutableArray new];
+    for (NSDictionary * obj in dataArr) {
+        [resaultArrs addObject:obj[@"resault"]];
+    }
+    [resaultArrs filterUsingPredicate:predicate];
     
     NSAlert * alert = [NSAlert new];
     [alert addButtonWithTitle:@"知道了"];
-    [alert setInformativeText:[NSString stringWithFormat:@"中出 %ld 期",[resaultArr count]]];
+    
+    NSString * message;
+    if ([dataArr count]/[resaultArrs count] < 2) {
+
+        float tmpPorfit = (float)[resaultArrs count] * 9.6 - (float)([dataArr count] - [resaultArrs count])*10;
+
+        message = [NSString stringWithFormat:@"共验证%ld期,中出 %ld 期,赢利%.2f元!",[dataArr count],[resaultArrs count],tmpPorfit];
+    }else {
+
+        float tmpPorfit = (float)[resaultArrs count] * 9.6 - (float)([dataArr count] - [resaultArrs count])*10;
+
+        message = [NSString stringWithFormat:@"共验证%ld期,中出 %ld 期,亏损%.2f元!",[dataArr count],[resaultArrs count],tmpPorfit];
+    }
+
+    [alert setInformativeText:message];
     
     [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
         
     }];
     
-    
-}
-
-/**
- 验证开奖号码
-
- @param number 还要查询次数
- @param queryStr 要查询的开奖号
- @param count 已经查询次数
- @param complete 返回结果
- */
--(void)verifictionNumber:(int)number query:(NSString *)queryStr count:(int)count block:(void(^)(BOOL isOk,NSMutableArray * numArrs))complete {
-   
-    [self arcNumber:number block:^(NSMutableArray *numArrs) {
-        
-        BOOL isCorrect = [self queryWinningNumber:queryStr queryArr:numArrs];
-        
-       
-        
-        if (_selectVerification) { // 如果选择连对方法验证
-            
-            if (isCorrect){ // 如果中奖号在这个数组中
-                
-                //                        DLog(@"%@",deleteArrs.firstObject);
-                
-                if (count == evertTime) {
-                     DLog(@"count-1 == = %d",count);
-                    [self arcNumber:number block:^(NSMutableArray *numArrs) {
-                        
-                        complete(true,numArrs);
-                    }];
-                    
-                }else {
-                    
-                    complete(true,nil);
-                }
-                return;
-            }
-            
-            
-        } else { // 否则先把连错
-            
-            if (!isCorrect){  // 如果中奖号不在这个数组中
-                
-//                                        DLog(@"%@",deleteArrs.firstObject);
-                
-                if (count == evertTime) {
-                    [self arcNumber:number block:^(NSMutableArray *numArrs) {
-                        
-                        complete(true,numArrs);
-                    }];
-                    
-                }else {
-                    complete(true,nil);
-                }
-                return;
-            }
-            
-        }
-        
-        complete(false,nil);
-       
-    }];
     
 }
 
