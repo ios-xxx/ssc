@@ -19,6 +19,11 @@
     
     /** 总赢利 */
     __block float totalProfit;
+    
+    /** 获取开奖数 */
+    __block int dateNumber;
+    /** 保存预测开奖号码 */
+    NSMutableArray * saveNumberArrs;
 }
 
 /** 验证期数 */
@@ -30,7 +35,7 @@
 
 /** 连对单选框 */
 @property (weak) IBOutlet NSButton *coreectRadio;
- /** 连错单选框 */
+/** 连错单选框 */
 @property (weak) IBOutlet NSButton *errorRadio;
 /** 当前验证状态（true(连对)/(false(连错)） */
 @property (assign,nonatomic) BOOL isVerification;
@@ -51,10 +56,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     /** 初始化请求 */
     [self initWithRequest];
-   
+    
     
 }
 
@@ -63,12 +67,13 @@
 /** 初始化请求 */
 -(void)initWithRequest {
     
-    NSString * url = @"http://1685582.com/Result/GetLotteryResultList?gameID=40&pageSize=100&pageIndex=1&";
+    
+    NSString * url = @"http://1685582.com/Result/GetLotteryResultList?gameID=78&pageSize=100&pageIndex=1&";
     int arcUri = arc4random()%199999999+1000000;
     url=[url stringByAppendingFormat:@"%d",arcUri];
     
     
-        DLog(@"%@",url);
+    //        DLog(@"%@",url);
     
     [CSYRequest requestGetUrl:url paramters:nil cookie:nil success:^(NSURLSessionDataTask * _Nonnull task, NSData *data) {
         
@@ -86,44 +91,119 @@
         _dataTable.dataArr = [NSArray arrayWithArray:_dataArrs];
         [_dataTable reloadData];
         
+        
         //动态移动cell至顶部
         [_dataTable scrollRowToVisible:[_dataArrs count] -1];
     } error:^(NSError *err) {
         
+        NSAlert * alert = [NSAlert new];
+        [alert setInformativeText:@"提示"];
+        [alert setInformativeText:@"下载历时数据出错,重新下载？"];
+        [alert addButtonWithTitle:@"取消"];
+        [alert addButtonWithTitle:@"知道了"];
+        [alert setAlertStyle:NSAlertStyleWarning];
         
+        [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+            
+            if (returnCode == 1001) {
+                
+                [self initWithRequest];
+            }
+        }];
         DLog(@"%@",err);
     }];
     
 }
 
+/** 刷新开奖数据 */
+-(void)refashData {
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        
+        NSTimer * timer = [NSTimer timerWithTimeInterval:15 repeats:true block:^(NSTimer * _Nonnull timer) {
+           
+            
+            NSString * url = @"http://1685582.com/Result/GetLotteryResultList?gameID=78&pageSize=1&pageIndex=1&";
+            int arcUri = arc4random()%199999999+1000000;
+            url=[url stringByAppendingFormat:@"%d",arcUri];
+            
+            
+            //            DLog(@"%@",url);
+            
+            [CSYRequest requestGetUrl:url paramters:nil cookie:nil success:^(NSURLSessionDataTask * _Nonnull task, NSData *data) {
+                
+                NSDictionary * json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+                
+                
+                if ([CSYIsNull isNull:json[@"list"]]) return ;
+                
+                /** 上一期开奖序列号 */
+                NSString * oldPeriod = [_dataTable.dataArr.lastObject objectForKey:@"period"];
+                /** 当前开奖序列号 */
+                NSString * currentPeriod = [[json[@"list"] objectAtIndex:0] objectForKey:@"period"];
+                
+                
+                if ([currentPeriod integerValue] > [oldPeriod integerValue]) {
+                    
+                   
+                    
+                    [_dataArrs addObject:[json[@"list"] objectAtIndex:0]];
+                    _dataTable.dataArr = [NSArray arrayWithArray:_dataArrs];
+                    [_dataTable reloadData];
+                    
+                    //动态移动cell至顶部
+                    [_dataTable scrollRowToVisible:[_dataArrs count] -1];
+                    /** 验证预测号码 */
+                    [self verificationProphesyNumber];
+                    /** 验证历时，并生成新号码 */
+                    [self verificationverificationNumber:1 number:50];
+                }
+            } error:^(NSError *err) {
+                
+                DLog(@"%@",err);
+                
+                NSThread * thred =  [NSThread currentThread];
+                [thred cancel];
+                thred = nil;
+            }];
+        }];
+        
+        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+        [[NSRunLoop currentRunLoop] run];
+        
+    });
+    
+    
+}
 
 /** 响应开始验证 */
 - (IBAction)startVerification:(NSButton *)sender {
     
+    /** 清空保存预测号码的数组 */
+    [saveNumberArrs removeAllObjects];
+    
     sender.enabled = false;
-    /** 初始化总赢利 */
-    totalProfit = 0.0;
-    
-    /** 验证范围 */
-    __block NSString * verificationStr = _VerificationTxt.stringValue;
-    
-    /** 每次验证期数 */
-    evertTime = [_checkTxt.stringValue intValue];
-    evertTime == 0 ? evertTime = 3 : evertTime;
-    
-    /** 每次随机的注数 */
-    int arcNumber = [_arcNumberTxt.stringValue intValue];
-    arcNumber == 0 ? arcNumber = 50 : arcNumber;
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-       
+        
+        /** 初始化总赢利 */
+        totalProfit = 0.0;
+        
+        /** 验证范围 */
+        __block NSString * verificationStr = _VerificationTxt.stringValue;
+        
+        
+        /** 每次随机的注数 */
+        int arcNumber = [_arcNumberTxt.stringValue intValue];
+        arcNumber == 0 ? arcNumber = 50 : arcNumber;
         /** 倒数第几期开始验证 */
         NSArray * verificationArr = [verificationStr componentsSeparatedByString:@"-"];
         
         __block int verificationNumber = [verificationArr.lastObject intValue];
         verificationNumber == 0 ? verificationNumber = 1 : verificationNumber;
         
-   
+        
         /** 校验结束期数 */
         int overCount = [verificationArr.firstObject intValue];
         
@@ -132,8 +212,8 @@
             if (totalProfit/100 > 0.3 && _isVerification == true){
                 
                 
-                dispatch_sync(dispatch_get_main_queue(), ^{
-                   
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
                     
                     NSAlert * alert = [NSAlert new];
                     [alert addButtonWithTitle:@"知道了"];
@@ -151,28 +231,26 @@
             }
             
             
-            [self verificationverificationNumber:verificationNumber evertNumber:evertTime number:arcNumber complete:^(BOOL isCoreer) {
+            [self verificationverificationNumber:verificationNumber number:arcNumber];
+
+            verificationNumber --;
+            
+            if (verificationNumber == overCount)
+            {
                 
-                verificationNumber --;
-                
-                if (verificationNumber == overCount)
-                {
-                    dispatch_sync(dispatch_get_main_queue(), ^{
-                       
-                        sender.enabled = true;
-                        
-                        [_resaultTable reloadData];
-                        /** 显示中奖总期数 */
-                        [self showWinningTotalNumber:[NSArray arrayWithArray:_resaultTable.dataArrs]];
-                    });
-                }
-            }];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    sender.enabled = true;
+                    
+                    [_resaultTable reloadData];
+                    /** 显示中奖总期数 */
+                    [self showWinningTotalNumber:[NSArray arrayWithArray:_resaultTable.dataArrs]];
+                });
+            }
             
         }
         
     });
-   
-    
     
 }
 
@@ -193,6 +271,7 @@
     [_errorRadio setState:1];
     _isVerification = true;
     
+    
 }
 
 /** 清空数据效验 */
@@ -208,107 +287,186 @@
     _stopOperation = true;
 }
 
+/** 响应投注按钮被单击 */
+- (IBAction)betting:(id)sender {
+    
+    NSString * url = @"http://1685582.com/Result/GetLotteryResultList?gameID=78&pageSize=100&pageIndex=1&";
+    int arcUri = arc4random()%199999999+1000000;
+    url=[url stringByAppendingFormat:@"%d",arcUri];
+    
+    
+//            DLog(@"%@",url);
+    
+    [CSYRequest requestGetUrl:url paramters:nil cookie:nil success:^(NSURLSessionDataTask * _Nonnull task, NSData *data) {
+        
+        NSDictionary * json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+        
+        
+        if ([CSYIsNull isNull:json[@"list"]]) return ;
+        
+        [self.dataArrs removeAllObjects];
+        
+        for (NSDictionary * obj in json[@"list"]){
+            [self.dataArrs addObject:obj];
+        }
+        
+        _dataArrs = [NSMutableArray arrayWithArray:[[_dataArrs reverseObjectEnumerator] allObjects]];
+        
+        _dataTable.dataArr = [NSArray arrayWithArray:_dataArrs];
+        [_dataTable reloadData];
+        
+        /** 刷新开奖数据 */
+        [self refashData];
+        
+        //动态移动cell至顶部
+        [_dataTable scrollRowToVisible:[_dataArrs count] -1];
+    } error:^(NSError *err) {
+        
+        NSAlert * alert = [NSAlert new];
+        [alert setInformativeText:@"提示"];
+        [alert setInformativeText:@"下载历时数据出错,重新下载？"];
+        [alert addButtonWithTitle:@"取消"];
+        [alert addButtonWithTitle:@"知道了"];
+        [alert setAlertStyle:NSAlertStyleWarning];
+        
+        [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
+            
+            if (returnCode == 1001) {
+                
+                [self initWithRequest];
+            }
+        }];
+        DLog(@"%@",err);
+    }];
+    
+    
+}
+
 
 
 
 #pragma mark - 兑奖号码生成
 /**
  验证开奖结果
-
+ 
  @param verificationNumber 倒数第几期开始验证
- @param evertNumber 每次验证的期数
  @param arcNumber    每次随机生成的注数
- @param complete 返回结果
+ return 返回结果
  */
--(void)verificationverificationNumber:(int)verificationNumber  evertNumber:(int)evertNumber number:(int)arcNumber complete:(void(^)(BOOL isCoreer))complete{
+-(BOOL)verificationverificationNumber:(int)verificationNumber  number:(int)arcNumber {
+    
+    /** 每次验证期数 */
+    evertTime = [_checkTxt.stringValue intValue];
+    evertTime == 0 ? evertTime = 3 : evertTime;
     
     /** 当前验证次数 */
     __block int  currentCount=0;
     
     /** 倒数第几期开始验证 */
-    __block int count2 = evertNumber + verificationNumber;
+    __block int count2 = evertTime + verificationNumber;
     
-    while (currentCount != evertNumber+1) {
+    while (currentCount != evertTime+1) {
 
+        //        DLog(@" 当前循环 = %d 循环次数 = %d",currentCount,evertNumber+1);
+        
         CSYDataModel * model = [CSYDataModel mj_objectWithKeyValues:_dataArrs[_dataArrs.count - count2]];
-       
-        [self arcNumber:arcNumber block:^(NSMutableArray *numArrs) {
+        
+        NSMutableArray * numArrs = [self arcNumber:50];
+        
+        BOOL isCorrect = [self queryWinningNumber:model.result queryArr:numArrs];
+        
+//         DLog(@"cont= %d",currentCount);
+        
+        if (isCorrect){  // 如果中奖号不在这个数组中
             
-            BOOL isCorrect = [self queryWinningNumber:model.result queryArr:numArrs];
-            
-            if (isCorrect){  // 如果中奖号不在这个数组中
-              
-//                DLog(@"cont= %d",currentCount);
-                if (currentCount == evertTime) {
+            if (currentCount == evertTime)
+            {
+                
+                numArrs = [self arcNumber:arcNumber];
+                
+                if (numArrs.count) {
                     
-                    [self arcNumber:arcNumber block:^(NSMutableArray *numArrs) {
+                    if (_dataArrs.count - count2 == _dataArrs.count -1) {
                         
-                        if (numArrs.count) {
+                        /** 初始化保存预测开奖号的字数组 */
+                        saveNumberArrs = numArrs;
+                        
+                        NSString * number=@"";
+                        for (NSString * res in numArrs) {
                             
-                            if (_dataArrs.count - count2 == _dataArrs.count -1) {
-
-                                DLog(@"%@%@",numArrs,model.result);
-
-
-                            }else {
+                            number = [number stringByAppendingFormat:@" %@",res];
+                        }
+                        
+                        NSPasteboard * pastedoard = [NSPasteboard generalPasteboard];
+                        [pastedoard clearContents];
+                        [pastedoard writeObjects:@[number]];
+                        DLog(@"预测%ld期开奖号码为\n%@",[model.period integerValue] +1,number);
+                        
+                        return true;
+                    }else {
+                        
+                        CSYDataModel * model2 = [CSYDataModel mj_objectWithKeyValues:_dataArrs[_dataArrs.count - count2+1]];
+                        
+                        
+                        DLog(@"result = %@ , number = %@",numArrs,model2.result);
+                        //  complete(true);
+                        BOOL isCorrect =  [self queryWinningNumber:model2.result queryArr:numArrs];
+                        
+                        if (isCorrect) { // 当中奖结果存在
                             
-                                CSYDataModel * model2 = [CSYDataModel mj_objectWithKeyValues:_dataArrs[_dataArrs.count - count2+1]];
-                                
-                                DLog(@"result = %@ , number = %@",numArrs,model2.result);
-                                //  complete(true);
-                                BOOL isCorrect =  [self queryWinningNumber:model2.result queryArr:numArrs];
-                                
-                                if (isCorrect) { // 当中奖结果存在
-                                    
-                                    /** 赢利+9.6 */
-                                    totalProfit +=9.60;
-                                    
+                            /** 赢利+9.6 */
+                            totalProfit +=9.60;
                             
-                                    
-                                    NSDictionary * paramterDict = @{
-                                                                    @"resault":@"中",
-                                                                    @"profit":@"9.6",
-                                                                    @"totalProfit":@(totalProfit),
-                                                                    };
-                                    [_resaultTable.dataArrs addObject:paramterDict];
-                                } else {
-                                    
-                                    /** 赢利-10 */
-                                    totalProfit -=10;
-                                    NSDictionary * paramterDict = @{
-                                                                    @"resault":@"没中",
-                                                                    @"profit":@"-10",
-                                                                    @"totalProfit":@(totalProfit),
-                                                                    };
-                                    [_resaultTable.dataArrs addObject:paramterDict];
-                                    
-                                }
-                                
-                            }
+                            
+                            
+                            NSDictionary * paramterDict = @{
+                                                            @"resault":@"中",
+                                                            @"profit":@"9.6",
+                                                            @"totalProfit":@(totalProfit),
+                                                            };
+                            [_resaultTable.dataArrs addObject:paramterDict];
+                            
+                          
+                            return true;
+                            
+                        } else {
+                            
+                            /** 赢利-10 */
+                            totalProfit -=10;
+                            NSDictionary * paramterDict = @{
+                                                            @"resault":@"没中",
+                                                            @"profit":@"-10",
+                                                            @"totalProfit":@(totalProfit),
+                                                            };
+                            [_resaultTable.dataArrs addObject:paramterDict];
+                            
+                            return true;
+                        }
+                        
                     }
-                        complete(true);
-                    }];
-                    
                 }
                 
-                currentCount ++;
-                count2 --;
-            }else {
                 
-                currentCount = 0;
-                count2 = evertNumber + verificationNumber;
             }
             
+            currentCount ++;
+            count2 --;
             
-        }];
-
+        }else {
+            
+            currentCount = 0;
+            count2 = evertTime + verificationNumber;
+        }
+        
+        
     }
+    return false;
 }
 
 
 /**
  显示中奖期数
-
+ 
  @param dataArr 中奖数据
  */
 -(void)showWinningTotalNumber:(NSArray *)dataArr {
@@ -324,19 +482,9 @@
     NSAlert * alert = [NSAlert new];
     [alert addButtonWithTitle:@"知道了"];
     
-    NSString * message;
-    if ([dataArr count]/[resaultArrs count] < 2) {
-
-        float tmpPorfit = (float)[resaultArrs count] * 9.6 - (float)([dataArr count] - [resaultArrs count])*10;
-
-        message = [NSString stringWithFormat:@"共验证%ld期,中出 %ld 期,赢利%.2f元!",[dataArr count],[resaultArrs count],tmpPorfit];
-    }else {
-
-        float tmpPorfit = (float)[resaultArrs count] * 9.6 - (float)([dataArr count] - [resaultArrs count])*10;
-
-        message = [NSString stringWithFormat:@"共验证%ld期,中出 %ld 期,亏损%.2f元!",[dataArr count],[resaultArrs count],tmpPorfit];
-    }
-
+    NSString * profiteStr = [_resaultTable.dataArrs.lastObject objectForKey:@"profit"];
+    NSString * message = [NSString stringWithFormat:@"共验证%ld期,中出 %ld 期,赢利%@元!",[dataArr count],[resaultArrs count],profiteStr];
+   
     [alert setInformativeText:message];
     
     [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSModalResponse returnCode) {
@@ -346,11 +494,56 @@
     
 }
 
+/** 验证预测号码 */
+-(void)verificationProphesyNumber {
+    
+    
+    /** 判断是否有开奖数据 */
+    if (saveNumberArrs.count > 0) {
+        
+        DLog(@"%@%@",saveNumberArrs,[_dataTable.dataArr.lastObject objectForKey:@"result"]);
+        BOOL isCorrect =  [self queryWinningNumber:[_dataTable.dataArr.lastObject objectForKey:@"result"] queryArr:[NSArray arrayWithArray:saveNumberArrs]];
+        
+        if (isCorrect) { // 当中奖结果存在
+            
+            /** 赢利+9.6 */
+            totalProfit +=9.60;
+            
+            
+            
+            NSDictionary * paramterDict = @{
+                                            @"resault":@"中",
+                                            @"profit":@"9.6",
+                                            @"totalProfit":@(totalProfit),
+                                            };
+            [_resaultTable.dataArrs addObject:paramterDict];
+            
+            
+        } else {
+            
+            /** 赢利-10 */
+            totalProfit -=10;
+            NSDictionary * paramterDict = @{
+                                            @"resault":@"没中",
+                                            @"profit":@"-10",
+                                            @"totalProfit":@(totalProfit),
+                                            };
+            [_resaultTable.dataArrs addObject:paramterDict];
+            
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [_resaultTable reloadData];
+        });
+        
+    }
+}
 
 
 /**
-  查询中奖号码
-
+ 查询中奖号码
+ 
  @param queryString 要查询的奖号
  @param toArray 被查询的数组
  resault bool 返回结果
@@ -378,11 +571,11 @@
 
 /**
  随机生成 N 注开奖号
-
+ 
  @param number 已经验证过开奖号的次数
- @param complete 返回随机出来的开奖号
+  return 返回开奖号
  */
--(void)arcNumber:(int)number block:(void(^)(NSMutableArray * numArrs))complete {
+-(NSMutableArray *)arcNumber:(int)number {
     
     
     NSMutableArray * numArrs = [NSMutableArray new];
@@ -412,15 +605,15 @@
         
     }
     
-    complete(numArrs);
-   
+    return numArrs;
+    
     
 }
 
 
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
-
+    
     // Update the view, if already loaded.
 }
 
