@@ -17,6 +17,8 @@
 		B650C5CD20581BF10080AD26 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B650C5CC20581BF10080AD26 /* main.m */; };
 		B650C5D820581BF10080AD26 /* ___Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = B650C5D720581BF10080AD26 /* ___Tests.m */; };
 		B650C5E320581BF10080AD26 /* ___UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B650C5E220581BF10080AD26 /* ___UITests.m */; };
+		B65953452065F134000E61A6 /* CSYPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65953432065F134000E61A6 /* CSYPopViewController.m */; };
+		B65953462065F134000E61A6 /* CSYPopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B65953442065F134000E61A6 /* CSYPopViewController.xib */; };
 		B6634D20205FE47E0043BE60 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6634D1F205FE47E0043BE60 /* WebKit.framework */; };
 		B6634D23205FE4A30043BE60 /* CSYWKWebview.m in Sources */ = {isa = PBXBuildFile; fileRef = B6634D22205FE4A30043BE60 /* CSYWKWebview.m */; };
 		B69C8D46205AA96000F6DE91 /* NSColor+CSYHex.m in Sources */ = {isa = PBXBuildFile; fileRef = B69C8CAE205AA95F00F6DE91 /* NSColor+CSYHex.m */; };
@@ -87,6 +89,8 @@
 		B69C8D87205AA96000F6DE91 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B69C8D43205AA96000F6DE91 /* UIButton+WebCache.m */; };
 		B69C8D88205AA96000F6DE91 /* SDWebImageWebPCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = B69C8D44205AA96000F6DE91 /* SDWebImageWebPCoder.m */; };
 		B69C8D8E205AB2D900F6DE91 /* CSYDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B69C8D8D205AB2D900F6DE91 /* CSYDataModel.m */; };
+		B6CBA2292066A1C90075DE40 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6CBA2282066A1C90075DE40 /* AVFoundation.framework */; };
+		B6CBA22B2066A3DE0075DE40 /* message.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B6CBA22A2066A3DE0075DE40 /* message.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,7 +117,7 @@
 		B60EE9B0205C250800AFB6A5 /* CSYResaultTable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSYResaultTable.m; sourceTree = "<group>"; };
 		B60EE9B2205C2FA900AFB6A5 /* CSYResaultModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSYResaultModel.h; sourceTree = "<group>"; };
 		B60EE9B3205C2FA900AFB6A5 /* CSYResaultModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSYResaultModel.m; sourceTree = "<group>"; };
-		B650C5BD20581BF10080AD26 /* 时时彩.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "时时彩.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B650C5BD20581BF10080AD26 /* 财猫.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "财猫.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B650C5C020581BF10080AD26 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B650C5C120581BF10080AD26 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B650C5C320581BF10080AD26 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -123,12 +127,15 @@
 		B650C5CB20581BF10080AD26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B650C5CC20581BF10080AD26 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B650C5CE20581BF10080AD26 /* ___.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "___.entitlements"; sourceTree = "<group>"; };
-		B650C5D320581BF10080AD26 /* 时时彩Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "时时彩Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B650C5D320581BF10080AD26 /* 财猫Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "财猫Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B650C5D720581BF10080AD26 /* ___Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "___Tests.m"; sourceTree = "<group>"; };
 		B650C5D920581BF10080AD26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B650C5DE20581BF10080AD26 /* 时时彩UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "时时彩UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B650C5DE20581BF10080AD26 /* 财猫UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "财猫UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B650C5E220581BF10080AD26 /* ___UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "___UITests.m"; sourceTree = "<group>"; };
 		B650C5E420581BF10080AD26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B65953422065F134000E61A6 /* CSYPopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSYPopViewController.h; sourceTree = "<group>"; };
+		B65953432065F134000E61A6 /* CSYPopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSYPopViewController.m; sourceTree = "<group>"; };
+		B65953442065F134000E61A6 /* CSYPopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CSYPopViewController.xib; sourceTree = "<group>"; };
 		B6634D1F205FE47E0043BE60 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		B6634D21205FE4A30043BE60 /* CSYWKWebview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSYWKWebview.h; sourceTree = "<group>"; };
 		B6634D22205FE4A30043BE60 /* CSYWKWebview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSYWKWebview.m; sourceTree = "<group>"; };
@@ -275,6 +282,8 @@
 		B69C8D8B205AAE7300F6DE91 /* 时时彩.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "时时彩.entitlements"; sourceTree = "<group>"; };
 		B69C8D8C205AB2D900F6DE91 /* CSYDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSYDataModel.h; sourceTree = "<group>"; };
 		B69C8D8D205AB2D900F6DE91 /* CSYDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSYDataModel.m; sourceTree = "<group>"; };
+		B6CBA2282066A1C90075DE40 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B6CBA22A2066A3DE0075DE40 /* message.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = message.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +291,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6CBA2292066A1C90075DE40 /* AVFoundation.framework in Frameworks */,
 				B6634D20205FE47E0043BE60 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,9 +345,9 @@
 		B650C5BE20581BF10080AD26 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B650C5BD20581BF10080AD26 /* 时时彩.app */,
-				B650C5D320581BF10080AD26 /* 时时彩Tests.xctest */,
-				B650C5DE20581BF10080AD26 /* 时时彩UITests.xctest */,
+				B650C5BD20581BF10080AD26 /* 财猫.app */,
+				B650C5D320581BF10080AD26 /* 财猫Tests.xctest */,
+				B650C5DE20581BF10080AD26 /* 财猫UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -352,6 +362,7 @@
 				B650C5C420581BF10080AD26 /* ViewController.m */,
 				B6634D21205FE4A30043BE60 /* CSYWKWebview.h */,
 				B6634D22205FE4A30043BE60 /* CSYWKWebview.m */,
+				B65953412065F10A000E61A6 /* PopViewController */,
 				B60EE9AA205BEB2000AFB6A5 /* 开奖号码表格 */,
 				B60EE9AE205C150300AFB6A5 /* 验证结果表格 */,
 				B69C8D8F205AB2E800F6DE91 /* DataModel */,
@@ -384,9 +395,20 @@
 			path = "时时彩UITests";
 			sourceTree = "<group>";
 		};
+		B65953412065F10A000E61A6 /* PopViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B65953422065F134000E61A6 /* CSYPopViewController.h */,
+				B65953432065F134000E61A6 /* CSYPopViewController.m */,
+				B65953442065F134000E61A6 /* CSYPopViewController.xib */,
+			);
+			path = PopViewController;
+			sourceTree = "<group>";
+		};
 		B6634D1E205FE47E0043BE60 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B6CBA2282066A1C90075DE40 /* AVFoundation.framework */,
 				B6634D1F205FE47E0043BE60 /* WebKit.framework */,
 			);
 			name = Frameworks;
@@ -646,6 +668,7 @@
 		B69C8D89205AA96C00F6DE91 /* other */ = {
 			isa = PBXGroup;
 			children = (
+				B6CBA22A2066A3DE0075DE40 /* message.mp3 */,
 				B69C8D8A205AA96C00F6DE91 /* PrefixHeader.pch */,
 			);
 			path = other;
@@ -665,9 +688,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B650C5BC20581BF10080AD26 /* 时时彩 */ = {
+		B650C5BC20581BF10080AD26 /* 财猫 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B650C5E720581BF10080AD26 /* Build configuration list for PBXNativeTarget "时时彩" */;
+			buildConfigurationList = B650C5E720581BF10080AD26 /* Build configuration list for PBXNativeTarget "财猫" */;
 			buildPhases = (
 				B650C5B920581BF10080AD26 /* Sources */,
 				B650C5BA20581BF10080AD26 /* Frameworks */,
@@ -677,14 +700,14 @@
 			);
 			dependencies = (
 			);
-			name = "时时彩";
+			name = "财猫";
 			productName = "时时彩";
-			productReference = B650C5BD20581BF10080AD26 /* 时时彩.app */;
+			productReference = B650C5BD20581BF10080AD26 /* 财猫.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B650C5D220581BF10080AD26 /* 时时彩Tests */ = {
+		B650C5D220581BF10080AD26 /* 财猫Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B650C5EA20581BF10080AD26 /* Build configuration list for PBXNativeTarget "时时彩Tests" */;
+			buildConfigurationList = B650C5EA20581BF10080AD26 /* Build configuration list for PBXNativeTarget "财猫Tests" */;
 			buildPhases = (
 				B650C5CF20581BF10080AD26 /* Sources */,
 				B650C5D020581BF10080AD26 /* Frameworks */,
@@ -695,14 +718,14 @@
 			dependencies = (
 				B650C5D520581BF10080AD26 /* PBXTargetDependency */,
 			);
-			name = "时时彩Tests";
+			name = "财猫Tests";
 			productName = "时时彩Tests";
-			productReference = B650C5D320581BF10080AD26 /* 时时彩Tests.xctest */;
+			productReference = B650C5D320581BF10080AD26 /* 财猫Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		B650C5DD20581BF10080AD26 /* 时时彩UITests */ = {
+		B650C5DD20581BF10080AD26 /* 财猫UITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B650C5ED20581BF10080AD26 /* Build configuration list for PBXNativeTarget "时时彩UITests" */;
+			buildConfigurationList = B650C5ED20581BF10080AD26 /* Build configuration list for PBXNativeTarget "财猫UITests" */;
 			buildPhases = (
 				B650C5DA20581BF10080AD26 /* Sources */,
 				B650C5DB20581BF10080AD26 /* Frameworks */,
@@ -713,9 +736,9 @@
 			dependencies = (
 				B650C5E020581BF10080AD26 /* PBXTargetDependency */,
 			);
-			name = "时时彩UITests";
+			name = "财猫UITests";
 			productName = "时时彩UITests";
-			productReference = B650C5DE20581BF10080AD26 /* 时时彩UITests.xctest */;
+			productReference = B650C5DE20581BF10080AD26 /* 财猫UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -744,7 +767,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B650C5B820581BF10080AD26 /* Build configuration list for PBXProject "时时彩" */;
+			buildConfigurationList = B650C5B820581BF10080AD26 /* Build configuration list for PBXProject "财猫" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -757,9 +780,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B650C5BC20581BF10080AD26 /* 时时彩 */,
-				B650C5D220581BF10080AD26 /* 时时彩Tests */,
-				B650C5DD20581BF10080AD26 /* 时时彩UITests */,
+				B650C5BC20581BF10080AD26 /* 财猫 */,
+				B650C5D220581BF10080AD26 /* 财猫Tests */,
+				B650C5DD20581BF10080AD26 /* 财猫UITests */,
 			);
 		};
 /* End PBXProject section */
@@ -769,7 +792,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B65953462065F134000E61A6 /* CSYPopViewController.xib in Resources */,
 				B69C8D5E205AA96000F6DE91 /* Info.plist in Resources */,
+				B6CBA22B2066A3DE0075DE40 /* message.mp3 in Resources */,
 				B650C5C720581BF10080AD26 /* Assets.xcassets in Resources */,
 				B650C5CA20581BF10080AD26 /* Main.storyboard in Resources */,
 				B69C8D50205AA96000F6DE91 /* Info.plist in Resources */,
@@ -807,6 +832,7 @@
 				B69C8D51205AA96000F6DE91 /* MJFoundation.m in Sources */,
 				B69C8D71205AA96000F6DE91 /* SDWebImageCodersManager.m in Sources */,
 				B69C8D4B205AA96000F6DE91 /* MJExtensionConst.m in Sources */,
+				B65953452065F134000E61A6 /* CSYPopViewController.m in Sources */,
 				B69C8D83205AA96000F6DE91 /* SDImageCacheConfig.m in Sources */,
 				B69C8D70205AA96000F6DE91 /* UIImage+ForceDecode.m in Sources */,
 				B650C5C520581BF10080AD26 /* ViewController.m in Sources */,
@@ -894,12 +920,12 @@
 /* Begin PBXTargetDependency section */
 		B650C5D520581BF10080AD26 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B650C5BC20581BF10080AD26 /* 时时彩 */;
+			target = B650C5BC20581BF10080AD26 /* 财猫 */;
 			targetProxy = B650C5D420581BF10080AD26 /* PBXContainerItemProxy */;
 		};
 		B650C5E020581BF10080AD26 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B650C5BC20581BF10080AD26 /* 时时彩 */;
+			target = B650C5BC20581BF10080AD26 /* 财猫 */;
 			targetProxy = B650C5DF20581BF10080AD26 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1061,7 +1087,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.songyangchen.---Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/时时彩.app/Contents/MacOS/时时彩";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/财猫.app/Contents/MacOS/财猫";
 			};
 			name = Debug;
 		};
@@ -1075,7 +1101,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.songyangchen.---Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/时时彩.app/Contents/MacOS/时时彩";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/财猫.app/Contents/MacOS/财猫";
 			};
 			name = Release;
 		};
@@ -1108,7 +1134,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B650C5B820581BF10080AD26 /* Build configuration list for PBXProject "时时彩" */ = {
+		B650C5B820581BF10080AD26 /* Build configuration list for PBXProject "财猫" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B650C5E520581BF10080AD26 /* Debug */,
@@ -1117,7 +1143,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B650C5E720581BF10080AD26 /* Build configuration list for PBXNativeTarget "时时彩" */ = {
+		B650C5E720581BF10080AD26 /* Build configuration list for PBXNativeTarget "财猫" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B650C5E820581BF10080AD26 /* Debug */,
@@ -1126,7 +1152,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B650C5EA20581BF10080AD26 /* Build configuration list for PBXNativeTarget "时时彩Tests" */ = {
+		B650C5EA20581BF10080AD26 /* Build configuration list for PBXNativeTarget "财猫Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B650C5EB20581BF10080AD26 /* Debug */,
@@ -1135,7 +1161,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B650C5ED20581BF10080AD26 /* Build configuration list for PBXNativeTarget "时时彩UITests" */ = {
+		B650C5ED20581BF10080AD26 /* Build configuration list for PBXNativeTarget "财猫UITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B650C5EE20581BF10080AD26 /* Debug */,

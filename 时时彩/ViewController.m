@@ -11,6 +11,8 @@
 #import "CSYResaultTable.h"
 #import "CSYDataModel.h"
 #import "CSYResaultModel.h"
+#import "CSYPopViewController.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface ViewController()
 {
@@ -49,6 +51,14 @@
 /** 存放开奖数据 */
 @property (strong,nonatomic) NSMutableArray * dataArrs;
 
+/** 状态栏图标 */
+@property (strong,nonatomic) NSStatusItem * statusItem;
+/** Pop属性 */
+@property (strong,nonatomic) NSPopover * popover;
+/** POp视图控制器 */
+@property (strong,nonatomic) CSYPopViewController * popViewController;
+/** 播放提示音 */
+@property (strong,nonatomic) AVAudioPlayer * play;
 @end
 
 @implementation ViewController
@@ -58,10 +68,34 @@
     
     /** 初始化请求 */
     [self initWithRequest];
-    
+    /** 初始化状态栏 */
+    [self initWithStatusBarItem];
     
 }
 
+
+#pragma mark - 初始化 StatusBarItem
+/** 初始化状态栏 */
+-(void)initWithStatusBarItem {
+    
+    self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+    [self.statusItem setImage:[NSImage imageNamed:@"cat"]];
+    
+    self.popover = [NSPopover new];
+    self.popover.behavior = NSPopoverBehaviorTransient;
+    self.popViewController = [[CSYPopViewController alloc]initWithNibName:@"CSYPopViewController" bundle:nil];
+    self.popover.contentViewController = self.popViewController;
+    self.popover.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantLight];
+    
+    /** 为Pop添加事件 */
+    self.statusItem.target = self;
+    [self.statusItem setAction:@selector(showPop:)];
+}
+
+-(void)showPop:(NSStatusBarButton *)sender {
+    [_popover showRelativeToRect:sender.bounds  ofView:sender preferredEdge:NSRectEdgeMaxY];
+    
+}
 
 #pragma mark - 初始化请求
 /** 初始化请求 */
@@ -118,8 +152,11 @@
 /** 刷新开奖数据 */
 -(void)refashData {
     
+    
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        
+    
+        /** 清空保存预测号码的数组 */
+        [saveNumberArrs removeAllObjects];
         
         NSTimer * timer = [NSTimer timerWithTimeInterval:15 repeats:true block:^(NSTimer * _Nonnull timer) {
            
@@ -146,18 +183,47 @@
                 
                 if ([currentPeriod integerValue] > [oldPeriod integerValue]) {
                     
-                   
-                    
-                    [_dataArrs addObject:[json[@"list"] objectAtIndex:0]];
+                   /** 开奖结果字字典 */
+                    NSDictionary * resaultNumberDict = [json[@"list"] objectAtIndex:0];
+                    [_dataArrs addObject:resaultNumberDict];
                     _dataTable.dataArr = [NSArray arrayWithArray:_dataArrs];
                     [_dataTable reloadData];
+                   
+                    /** 开奖结果字符串 */
+                    NSString * resaultNumberStr = [NSString stringWithFormat:@"%@期：%@", [resaultNumberDict objectForKey:@"period"], [resaultNumberDict objectForKey:@"result"]];
+                    [_popViewController.numberResault setStringValue:resaultNumberStr];
                     
+                    NSStatusBarButton * stausBarButton = self.statusItem.button;
+                    [_popover showRelativeToRect:stausBarButton.bounds ofView:stausBarButton preferredEdge:NSRectEdgeMaxY];
+
                     //动态移动cell至顶部
                     [_dataTable scrollRowToVisible:[_dataArrs count] -1];
                     /** 验证预测号码 */
                     [self verificationProphesyNumber];
+                    /** 播放提示音 */
+                    [self.play play];
+                    
+                    /** 每次验证期数 */
+                    evertTime = [_checkTxt.stringValue intValue];
+                    evertTime == 0 ? evertTime = 3 : evertTime;
+                    
                     /** 验证历时，并生成新号码 */
-                    [self verificationverificationNumber:1 number:50];
+                    [self verificationverificationNumber:1 evertTime:evertTime number:50];
+                    
+                    /** 通过定时器关闭 pop */
+                    dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
+                    dispatch_source_set_timer(timer, DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC, 1.0 * NSEC_PER_SEC);
+                     __block   int time = 0;
+                    dispatch_source_set_event_handler(timer, ^{
+                        time++;
+                        if (time == 7) {
+                            
+                            [self.popover close];
+                            dispatch_cancel(timer);
+
+                        }
+                    });
+                    dispatch_resume(timer);
                 }
             } error:^(NSError *err) {
                 
@@ -177,6 +243,7 @@
     
 }
 
+
 /** 响应开始验证 */
 - (IBAction)startVerification:(NSButton *)sender {
     
@@ -185,18 +252,23 @@
     
     sender.enabled = false;
     
+    /** 验证范围 */
+    __block NSString * verificationStr = _VerificationTxt.stringValue;
+    
+    /** 每次随机的注数 */
+    int arcNumber = [_arcNumberTxt.stringValue intValue];
+    arcNumber == 0 ? arcNumber = 50 : arcNumber;
+    
+    /** 每次验证期数 */
+    evertTime = [_checkTxt.stringValue intValue];
+    evertTime == 0 ? evertTime = 3 : evertTime;
+    
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
         /** 初始化总赢利 */
         totalProfit = 0.0;
-        
-        /** 验证范围 */
-        __block NSString * verificationStr = _VerificationTxt.stringValue;
-        
-        
-        /** 每次随机的注数 */
-        int arcNumber = [_arcNumberTxt.stringValue intValue];
-        arcNumber == 0 ? arcNumber = 50 : arcNumber;
+     
+       
         /** 倒数第几期开始验证 */
         NSArray * verificationArr = [verificationStr componentsSeparatedByString:@"-"];
         
@@ -231,7 +303,7 @@
             }
             
             
-            [self verificationverificationNumber:verificationNumber number:arcNumber];
+            [self verificationverificationNumber:verificationNumber evertTime:evertTime number:arcNumber];
 
             verificationNumber --;
             
@@ -353,12 +425,9 @@
  @param arcNumber    每次随机生成的注数
  return 返回结果
  */
--(BOOL)verificationverificationNumber:(int)verificationNumber  number:(int)arcNumber {
+-(BOOL)verificationverificationNumber:(int)verificationNumber evertTime:(int)evertTime  number:(int)arcNumber {
     
-    /** 每次验证期数 */
-    evertTime = [_checkTxt.stringValue intValue];
-    evertTime == 0 ? evertTime = 3 : evertTime;
-    
+
     /** 当前验证次数 */
     __block int  currentCount=0;
     
@@ -626,5 +695,18 @@
     return _dataArrs = [NSMutableArray new];
 }
 
+-(AVAudioPlayer *)play {
+    
+    if (_play) return _play;
+    
+    NSString * pathUrl = [[NSBundle mainBundle] pathForResource:@"message" ofType:@"mp3"];
+    NSURL * url = [NSURL fileURLWithPath:pathUrl];
+    
+    NSError * err;
+    self.play = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:&err];
+    [self.play prepareToPlay];
+    
+    return _play;
+}
 
 @end
