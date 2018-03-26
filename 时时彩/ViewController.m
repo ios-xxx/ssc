@@ -13,6 +13,7 @@
 #import "CSYResaultModel.h"
 #import "CSYPopViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "CSYWebViewController.h"
 
 @interface ViewController()
 {
@@ -59,6 +60,8 @@
 @property (strong,nonatomic) CSYPopViewController * popViewController;
 /** 播放提示音 */
 @property (strong,nonatomic) AVAudioPlayer * play;
+/** webView */
+@property (strong,nonatomic) CSYWebViewController * webView;
 @end
 
 @implementation ViewController
@@ -357,6 +360,7 @@
 - (IBAction)stopOperation:(id)sender {
     
     _stopOperation = true;
+    
 }
 
 /** 响应投注按钮被单击 */
@@ -414,6 +418,13 @@
     
 }
 
+/** 响应webView被单击 */
+- (IBAction)webView:(id)sender {
+    
+    self.webView = [[CSYWebViewController alloc]initWithWindowNibName: @"CSYWebViewController"];
+    [_webView.window setTitle:@"财猫"];
+    [self.webView.window orderFront:nil];
+}
 
 
 
@@ -470,7 +481,8 @@
                         [pastedoard clearContents];
                         [pastedoard writeObjects:@[number]];
                         DLog(@"预测%ld期开奖号码为\n%@",[model.period integerValue] +1,number);
-                        
+                        /** 发送通知 */
+                        [[NSNotificationCenter defaultCenter]postNotificationName:@"message" object:number];
                         return true;
                     }else {
                         
@@ -551,7 +563,7 @@
     NSAlert * alert = [NSAlert new];
     [alert addButtonWithTitle:@"知道了"];
     
-    NSString * profiteStr = [_resaultTable.dataArrs.lastObject objectForKey:@"profit"];
+    NSString * profiteStr = [_resaultTable.dataArrs.lastObject objectForKey:@"totalProfit"];
     NSString * message = [NSString stringWithFormat:@"共验证%ld期,中出 %ld 期,赢利%@元!",[dataArr count],[resaultArrs count],profiteStr];
    
     [alert setInformativeText:message];

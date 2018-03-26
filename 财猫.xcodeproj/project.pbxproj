@@ -89,6 +89,8 @@
 		B69C8D87205AA96000F6DE91 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B69C8D43205AA96000F6DE91 /* UIButton+WebCache.m */; };
 		B69C8D88205AA96000F6DE91 /* SDWebImageWebPCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = B69C8D44205AA96000F6DE91 /* SDWebImageWebPCoder.m */; };
 		B69C8D8E205AB2D900F6DE91 /* CSYDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B69C8D8D205AB2D900F6DE91 /* CSYDataModel.m */; };
+		B6B5DEB22067CE6000B08732 /* CSYWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B5DEB02067CE6000B08732 /* CSYWebViewController.m */; };
+		B6B5DEB32067CE6000B08732 /* CSYWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6B5DEB12067CE6000B08732 /* CSYWebViewController.xib */; };
 		B6CBA2292066A1C90075DE40 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6CBA2282066A1C90075DE40 /* AVFoundation.framework */; };
 		B6CBA22B2066A3DE0075DE40 /* message.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B6CBA22A2066A3DE0075DE40 /* message.mp3 */; };
 /* End PBXBuildFile section */
@@ -282,6 +284,9 @@
 		B69C8D8B205AAE7300F6DE91 /* 时时彩.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "时时彩.entitlements"; sourceTree = "<group>"; };
 		B69C8D8C205AB2D900F6DE91 /* CSYDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSYDataModel.h; sourceTree = "<group>"; };
 		B69C8D8D205AB2D900F6DE91 /* CSYDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSYDataModel.m; sourceTree = "<group>"; };
+		B6B5DEAF2067CE6000B08732 /* CSYWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSYWebViewController.h; sourceTree = "<group>"; };
+		B6B5DEB02067CE6000B08732 /* CSYWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSYWebViewController.m; sourceTree = "<group>"; };
+		B6B5DEB12067CE6000B08732 /* CSYWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CSYWebViewController.xib; sourceTree = "<group>"; };
 		B6CBA2282066A1C90075DE40 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B6CBA22A2066A3DE0075DE40 /* message.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = message.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -360,8 +365,7 @@
 				B650C5C120581BF10080AD26 /* AppDelegate.m */,
 				B650C5C320581BF10080AD26 /* ViewController.h */,
 				B650C5C420581BF10080AD26 /* ViewController.m */,
-				B6634D21205FE4A30043BE60 /* CSYWKWebview.h */,
-				B6634D22205FE4A30043BE60 /* CSYWKWebview.m */,
+				B6B5DEAE2067CE3200B08732 /* webView */,
 				B65953412065F10A000E61A6 /* PopViewController */,
 				B60EE9AA205BEB2000AFB6A5 /* 开奖号码表格 */,
 				B60EE9AE205C150300AFB6A5 /* 验证结果表格 */,
@@ -685,6 +689,18 @@
 			path = DataModel;
 			sourceTree = "<group>";
 		};
+		B6B5DEAE2067CE3200B08732 /* webView */ = {
+			isa = PBXGroup;
+			children = (
+				B6634D21205FE4A30043BE60 /* CSYWKWebview.h */,
+				B6634D22205FE4A30043BE60 /* CSYWKWebview.m */,
+				B6B5DEAF2067CE6000B08732 /* CSYWebViewController.h */,
+				B6B5DEB02067CE6000B08732 /* CSYWebViewController.m */,
+				B6B5DEB12067CE6000B08732 /* CSYWebViewController.xib */,
+			);
+			path = webView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -795,6 +811,7 @@
 				B65953462065F134000E61A6 /* CSYPopViewController.xib in Resources */,
 				B69C8D5E205AA96000F6DE91 /* Info.plist in Resources */,
 				B6CBA22B2066A3DE0075DE40 /* message.mp3 in Resources */,
+				B6B5DEB32067CE6000B08732 /* CSYWebViewController.xib in Resources */,
 				B650C5C720581BF10080AD26 /* Assets.xcassets in Resources */,
 				B650C5CA20581BF10080AD26 /* Main.storyboard in Resources */,
 				B69C8D50205AA96000F6DE91 /* Info.plist in Resources */,
@@ -826,6 +843,7 @@
 				B69C8D6B205AA96000F6DE91 /* UIImage+WebP.m in Sources */,
 				B69C8D80205AA96000F6DE91 /* UIImageView+WebCache.m in Sources */,
 				B69C8D63205AA96000F6DE91 /* AFNetworkReachabilityManager.m in Sources */,
+				B6B5DEB22067CE6000B08732 /* CSYWebViewController.m in Sources */,
 				B69C8D7D205AA96000F6DE91 /* SDWebImageDownloaderOperation.m in Sources */,
 				B69C8D6D205AA96000F6DE91 /* SDWebImageManager.m in Sources */,
 				B69C8D57205AA96000F6DE91 /* MASConstraintMaker.m in Sources */,

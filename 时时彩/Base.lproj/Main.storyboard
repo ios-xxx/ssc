@@ -714,7 +714,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" ambiguous="YES" id="u29-5u-5EX">
                                     <rect key="frame" x="1" y="0.0" width="217" height="551"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="TGR-Y2-d29" id="Urj-xo-OSk" customClass="CSYAwardTable">
                                             <rect key="frame" x="0.0" y="0.0" width="217" height="528"/>
@@ -769,7 +769,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" ambiguous="YES" id="chw-Go-de6">
                                     <rect key="frame" x="1" y="0.0" width="548" height="551"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="KMw-f3-RIf" id="zZM-sg-EVX" customClass="CSYResaultTable">
                                             <rect key="frame" x="0.0" y="0.0" width="548" height="528"/>
@@ -950,6 +950,17 @@
                                 <connections>
                                     <action selector="betting:" target="XfG-lQ-9wD" id="hqI-z7-Z5S"/>
                                 </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DRf-oK-4Ah">
+                                <rect key="frame" x="778" y="248" width="189" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="webView" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OgC-II-hL3">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <connections>
+                                        <action selector="webView:" target="XfG-lQ-9wD" id="9wI-Rh-H7s"/>
+                                    </connections>
+                                </buttonCell>
                             </button>
                         </subviews>
                     </view>
