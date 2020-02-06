@@ -45,11 +45,11 @@
     
     if ([[tableColumn identifier] isEqualToString:@"id"]) {
         
-        [textCell setTitle:model.period];
+        [textCell setTitle:model.qihao];
         
     }else if ([[tableColumn identifier] isEqualToString:@"number"]) {
         
-        [textCell setTitle:model.result];
+        [textCell setTitle:model.data];
         
     }
     

@@ -10,8 +10,8 @@
 
 @interface CSYDataModel : NSObject
 /** 编号 */
-@property (strong,nonatomic) NSString * period;
+@property (strong,nonatomic) NSString * qihao;
 /** 中奖号 */
-@property (strong,nonatomic) NSString * result;
+@property (strong,nonatomic) NSString * data;
 
 @end
