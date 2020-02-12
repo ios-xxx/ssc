@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CSYDataModel.h"
 
-@interface CSYResaultModel : NSObject
+@interface CSYResaultModel : CSYDataModel
+/** 预测开奖号码*/
+@property (strong,nonatomic) NSString * forecas;
 /** 中奖结果 */
 @property (strong,nonatomic) NSString * resault;
 /** 本期赢利 */

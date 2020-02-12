@@ -19,7 +19,7 @@
 
 -(void)awakeFromNib {
     
-    NSArray * titleArr = @[@"中奖结果",@"赢利",@"总赢利"];
+    NSArray * titleArr = @[@"期号",@"开奖号码",@"预测号码",@"中奖结果",@"赢利",@"总赢利"];
     
     NSInteger count = [titleArr count];
     
@@ -47,7 +47,19 @@
     
     NSButton * textCell = cell;
     
-    if ([[tableColumn identifier] isEqualToString:@"state"]) {
+    if ([[tableColumn identifier] isEqualToString:@"number"]) {
+        
+        [textCell setTitle:model.qihao];
+        
+    }else if ([[tableColumn identifier] isEqualToString:@"openNumber"]) {
+        
+        [textCell setTitle:model.data];
+        
+    }else if ([[tableColumn identifier] isEqualToString:@"forecasNumber"]) {
+        
+        [textCell setTitle:model.forecas];
+        
+    }else if ([[tableColumn identifier] isEqualToString:@"state"]) {
         
         [textCell setTitle:model.resault];
         
